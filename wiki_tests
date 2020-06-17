@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+#This file is a bash script to make sure that the implementation of Soundex
+# works on the tests given on the wiki page
+
+# NOTE : make sure that Soundex.c is compiled to Sndx before running the test
+
+./Sndx robert > test_out
+./Sndx Rupert >> test_out
+./Sndx rUbIn >> test_out
+./Sndx ashcraft >> test_out
+./Sndx aSHcroft >> test_out
+./Sndx tymczak >> test_out
+./Sndx Pfister >> test_out
+./Sndx honeyman >> test_out
+
+var1=$(diff test_out test_answers)
+var2=""
+if [ "$var1" == "$var2" ]
+	then
+		echo "test pass"
+	else
+		echo "test fail"
+		echo "$var1"
+fi
